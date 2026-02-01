@@ -8,7 +8,8 @@
 }
 
 body { 
-    font-family: 'Comic Sans MS', cursive, sans-serif;
+    /* Используем системный округлый шрифт, который идеально работает на iPhone */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-color: var(--bg); 
     color: var(--text); 
     display: flex; 
@@ -16,6 +17,8 @@ body {
     align-items: center;
     padding: 15px;
     margin: 0;
+    /* Улучшаем отрисовку шрифтов на мобильных устройствах */
+    -webkit-font-smoothing: antialiased;
 }
 
 .container { 
@@ -28,6 +31,7 @@ h1 {
     text-align: center; 
     font-size: 1.4rem; 
     margin-bottom: 20px;
+    letter-spacing: 1px;
 }
 
 .week-title {
@@ -39,6 +43,7 @@ h1 {
     text-align: center;
     margin: 20px 0 10px 0;
     font-weight: bold;
+    box-shadow: 0 4px 10px rgba(255, 77, 109, 0.2);
 }
 
 .day-block { 
@@ -61,29 +66,35 @@ h1 {
 
 .lesson { 
     display: grid; 
-    /* Столбцы: Номер | Предмет | Время | Тип */
     grid-template-columns: 45px 1fr 95px 65px; 
-    padding: 12px 10px;
+    padding: 14px 10px; /* Увеличил отступы для кликабельности */
     align-items: center;
     font-size: 0.85rem;
+    border-bottom: 1px solid #fff0f3;
+}
+
+.lesson:last-child {
+    border-bottom: none;
 }
 
 .lesson-num {
-    font-weight: bold;
+    font-weight: 800; /* Более жирный номер */
     color: var(--pink-dark);
     font-size: 0.75rem;
 }
 
 .subject { 
     font-weight: 600; 
+    color: var(--text);
     padding-right: 5px;
+    line-height: 1.2;
 }
 
 .time { 
-    font-size: 0.7rem; 
-    color: var(--pink-main); 
+    font-size: 0.75rem; 
+    color: var(--pink-dark); /* Сделал темнее для читаемости на белом фоне */
     text-align: center;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .type { 
@@ -91,7 +102,7 @@ h1 {
     color: white; 
     background: var(--pink-main); 
     padding: 4px 2px; 
-    border-radius: 10px; 
+    border-radius: 8px; 
     text-align: center;
     font-weight: bold;
     text-transform: lowercase;
@@ -99,11 +110,11 @@ h1 {
 
 .break {
     background-color: #fff0f3;
-    color: var(--pink-main);
+    color: var(--pink-dark); /* Темнее для контраста */
     font-size: 0.7rem;
     text-align: center;
-    padding: 4px;
+    padding: 6px;
     border-top: 1px dashed var(--pink-light);
     border-bottom: 1px dashed var(--pink-light);
-    font-style: italic;
+    font-weight: 500;
 }
